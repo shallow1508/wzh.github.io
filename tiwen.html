@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0;">
+    <div id="questionTrendChart" style="width: 100%; height: 100%;"></div>
+    <script type="text/javascript">
+        var chart = echarts.init(document.getElementById('questionTrendChart'));
+        var option = {
+            title: { text: '提问趋势对比' },
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['今日提问', '昨日提问'] },
+            xAxis: { type: 'category', boundaryGap: false, data: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00'] },
+            yAxis: { type: 'value', name: '提问次数' },
+            series: [
+                {
+                    name: '今日提问',
+                    type: 'line',
+                    data: [30, 32, 34, 31, 29, 35, 33], // 自定义数据
+                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                },
+                {
+                    name: '昨日提问',
+                    type: 'line',
+                    data: [28, 27, 25, 26, 24, 23, 22], // 自定义数据
+                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                }
+            ]
+        };
+        chart.setOption(option);
+    </script>
+</body>
+</html>

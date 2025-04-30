@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0;">
+    <div id="heartRateChart" style="width: 100%; height: 100%;"></div>
+    <script type="text/javascript">
+        var chart = echarts.init(document.getElementById('heartRateChart'));
+        var option = {
+            title: { text: '睡眠心率对比' },
+            tooltip: { trigger: 'axis' },
+            legend: { data: ['今日心率', '昨日心率'] },
+            xAxis: { type: 'category', boundaryGap: false, data: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00'] },
+            yAxis: { type: 'value', name: '心率 (bpm)' },
+            series: [
+                {
+                    name: '今日心率',
+                    type: 'line',
+                    data: [60, 62, 58, 57, 59, 61, 60], // 自定义数据
+                    markPoint: {
+                        data: [
+                            { type: 'max', name: '最大值' },
+                            { type: 'min', name: '最小值' }
+                        ]
+                    }
+                },
+                {
+                    name: '昨日心率',
+                    type: 'line',
+                    data: [61, 60, 59, 58, 57, 56, 55], // 自定义数据
+                    markPoint: {
+                        data: [
+                            { type: 'max', name: '最大值' },
+                            { type: 'min', name: '最小值' }
+                        ]
+                    }
+                }
+            ]
+        };
+        chart.setOption(option);
+    </script>
+</body>
+</html>

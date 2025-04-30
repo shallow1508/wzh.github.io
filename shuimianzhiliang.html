@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0;">
+    <div id="sleepQualityChart" style="width: 100%; height: 100%;"></div>
+    <script type="text/javascript">
+        var chart = echarts.init(document.getElementById('sleepQualityChart'));
+        var option = {
+            title: { text: '睡眠质量对比' },
+            tooltip: { trigger: 'item' },
+            legend: { top: '5%', left: 'center', data: ['深度睡眠', '浅睡眠', '清醒时间'] },
+            series: [
+                {
+                    name: '今日睡眠',
+                    type: 'pie',
+                    radius: ['40%', '55%'],
+                    data: [
+                        { value: 35, name: '深度睡眠' },
+                        { value: 45, name: '浅睡眠' },
+                        { value: 20, name: '清醒时间' }
+                    ],
+                    label: { formatter: '{b}: {d}%' }
+                },
+                {
+                    name: '昨日睡眠',
+                    type: 'pie',
+                    radius: ['60%', '75%'],
+                    data: [
+                        { value: 30, name: '深度睡眠' },
+                        { value: 50, name: '浅睡眠' },
+                        { value: 20, name: '清醒时间' }
+                    ],
+                    label: { formatter: '{b}: {d}%' }
+                }
+            ]
+        };
+        chart.setOption(option);
+    </script>
+</body>
+</html>

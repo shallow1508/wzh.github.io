@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <style>
+        #moodChart {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body style="height: 100%; margin: 0">
+    <div id="moodChart"></div>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('moodChart');
+        var myChart = echarts.init(chartDom);
+        var option = {
+            title: {
+                text: '心情变化柱状图（相较昨日）',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: ['04-29 00:00', '04-29 03:00', '04-29 06:00', '04-29 09:00', 
+                      '04-29 12:00', '04-29 15:00', '04-29 18:00', '04-29 21:00',
+                      '04-30 00:00', '04-30 03:00', '04-30 06:00', '04-30 09:00', 
+                      '04-30 12:00', '04-30 15:00', '04-30 18:00', '04-30 21:00']
+            },
+            yAxis: {
+                type: 'value',
+                name: '心情变化值'
+            },
+            series: [{
+                data: [2, -1, 3, -2, 1, -1, 2, 0, 3, -2, 1, -1, 2, -1, 3, -2, 1],
+                type: 'bar',
+                itemStyle: {
+                    color: function(params) {
+                        return params.data >= 0 ? 'green' : 'red';
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'inside'
+                }
+            }]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

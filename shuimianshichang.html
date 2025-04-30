@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>睡眠时长折线图</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="sleepDurationChart" style="width: 1200px;height:800px;"></div>
+    <script>
+        var chart = echarts.init(document.getElementById('sleepDurationChart'));
+        var option = {
+            title: { text: '一周睡眠时长' },
+            tooltip: { trigger: 'axis' },
+            xAxis: { 
+                type: 'category',
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: { 
+                type: 'value', 
+                name: '睡眠时长 (小时)' 
+            },
+            series: [{
+                data: [7.2, 6.8, 7.5, 7.0, 6.5, 8.0, 7.8], // 自定义数据
+                type: 'line',
+                smooth: true
+            }]
+        };
+        chart.setOption(option);
+    </script>
+</body>
+</html>
